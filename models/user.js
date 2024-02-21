@@ -4,14 +4,13 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const userSchema = new Schema({
-    name: {type: String, required:true},
+    name: {type: String},
     email:{type: String, required:true, unique: true},
     password: {type:String, required:true},
-    blogs: [{type: mongoose.Schema.Types.ObjectId, ref: 'Blog'}]
+    blogs: [{type: Schema.Types.ObjectId, ref: 'Blog'}]
 }, {
     timestamps: true
 })
-
 
 
 userSchema.pre('save', async function(next) {
@@ -27,4 +26,5 @@ userSchema.methods.generateAuthToken = async function() {
 }
 
 const User = model('User', userSchema)
+
 module.exports = User
