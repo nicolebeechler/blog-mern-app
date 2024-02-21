@@ -76,6 +76,8 @@ async function updateBlog(req,res,next) {
 async function deleteBlog(req,res,next) {
     try{
         const blog = await Blog.findByIdAndDelete(req.params.id)
+        req.user.blogs.pull(blog)
+        req.user.save()
         res.locals.data.blog = blog
         next()
     } catch(error) {
