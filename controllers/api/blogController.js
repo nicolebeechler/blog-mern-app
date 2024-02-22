@@ -24,6 +24,7 @@ function jsonBlogs(_, res) {
 
 async function createBlog(req,res,next) {
     try{
+        req.body.user = req.user._id
         const blog = await Blog.create(req.body) //{ title, body, user }
         req.user.blogs.addToSet(blog)
         req.user.save()
