@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 app.use(logger('dev'))
 app.use(favicon(path.join(__dirname, 'public', 'img','logo.png')))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/api/users', require('./routes/api/userRouter'))
+app.use('/api/users', require('./routes/api/userRouter')) // Listening for any route that has /api/users
 app.use('/api/blogs', require('./routes/api/blogRouter'))
 // http://localhost:8000/api/todos/completed
 app.get('*', (req, res) => {
