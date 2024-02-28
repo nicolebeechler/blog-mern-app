@@ -60,7 +60,7 @@ export default function ShowPage (props){
             <button onClick={() => setShowUpdate(!showUpdate)}>Reveal Update Form</button>:
             <></>
             }
-            {allowChanges && showUpdate ? <UpdateForm id={id} updateBlog={props.updateBlog} setShowUpdate={setShowUpdate} setBlog={setBlog} blog={blog} token={props.token} setToken={props.token}/> : <></>}
+            {allowChanges && showUpdate ? <UpdateForm id={id} updateBlog={props.updateBlog} setShowUpdate={setShowUpdate} setBlog={setBlog} blog={blog} user={props.user} token={props.token} setToken={props.token}/> : <></>}
             {allowChanges? <button onClick={handleDelete}>Delete Blog</button>: <></>}
             <Link to={'/'}>Go to HomePage</Link>
         </div>

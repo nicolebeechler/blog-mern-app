@@ -1,9 +1,8 @@
 export default function UpdateForm(props) {
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await props.updateBlog(formData, props.id, props.token)
+            const data = await props.updateBlog(props.blog, props.id, props.token)
             props.setBlog(data)
             props.setShowUpdate(false)
         } catch (error) {
@@ -15,12 +14,12 @@ export default function UpdateForm(props) {
         props.setBlog({...props.blog, [e.target.name]: e.target.value })
     }
 
-    return (
+    return(
         <form onSubmit={handleSubmit}>
             <h2>Update Blog Below</h2>
-            <input type="text" name="title" placeholder="Title" value={formData.title} onChange={handleChange}/>
-            <input type="text" name="body" placeholder="Body" value={formData.body} onChange={handleChange}/>
-            <input type="submit" value="Update Blog"/>
+            <input placeholder='Title' type="text" name="title" value={props.blog.title} onChange={handleChange}/>
+            <input placeholder='BODY' type="text" name="body" value={props.blog.body} onChange={handleChange}/>
+            <input type="submit" value="Submit Update Data"/>
         </form>
     )
 }

@@ -442,7 +442,7 @@ function UpdateForm(props) {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await props.updateBlog(formData, props.id, props.token);
+      const data = await props.updateBlog(props.blog, props.id, props.token);
       props.setBlog(data);
       props.setShowUpdate(false);
     } catch (error) {
@@ -457,20 +457,20 @@ function UpdateForm(props) {
   return /*#__PURE__*/React.createElement("form", {
     onSubmit: handleSubmit
   }, /*#__PURE__*/React.createElement("h2", null, "Update Blog Below"), /*#__PURE__*/React.createElement("input", {
+    placeholder: "Title",
     type: "text",
     name: "title",
-    placeholder: "Title",
-    value: formData.title,
+    value: props.blog.title,
     onChange: handleChange
   }), /*#__PURE__*/React.createElement("input", {
+    placeholder: "BODY",
     type: "text",
     name: "body",
-    placeholder: "Body",
-    value: formData.body,
+    value: props.blog.body,
     onChange: handleChange
   }), /*#__PURE__*/React.createElement("input", {
     type: "submit",
-    value: "Update Blog"
+    value: "Submit Update Data"
   }));
 }
 
@@ -656,6 +656,7 @@ function ShowPage(props) {
     setShowUpdate: setShowUpdate,
     setBlog: setBlog,
     blog: blog,
+    user: props.user,
     token: props.token,
     setToken: props.token
   }) : /*#__PURE__*/React.createElement(React.Fragment, null), allowChanges ? /*#__PURE__*/React.createElement("button", {
@@ -1170,4 +1171,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.619e2e76073363856726b9b1bddfb420.js.map
+//# sourceMappingURL=App.b13d286f2ef0a730a0da270c905716de.js.map
